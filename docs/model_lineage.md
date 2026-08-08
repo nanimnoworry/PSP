@@ -12,10 +12,10 @@
 
 ```mermaid
 flowchart LR
-    A[1안\n기초 성능 수립\nOOF Ensemble\nSubmission AUC 0.74213]
-    B[2안\nFeature 확장 + Ensemble/Stacking\nSubmission AUC 0.74232]
-    C[3안\nOOF + Multi-Seed 일반화\nSubmission AUC 0.74231]
-    D[Final Adopted\n3안 Production Model]
+    A[1안<br/>기초 성능 수립<br/>OOF Ensemble<br/>Submission AUC 0.74213]
+    B[2안<br/>Feature 확장 + Ensemble/Stacking<br/>Submission AUC 0.74232]
+    C[3안<br/>OOF + Multi-Seed 일반화<br/>Submission AUC 0.74231]
+    D[Final Adopted<br/>3안 Production Model]
 
     A --> B --> C --> D
     B -. Highest submitted AUC .-> D
@@ -113,12 +113,12 @@ Rank 계열은 ROC-AUC에는 유리하지만 확률 calibration / LogLoss에는 
 
 ```mermaid
 flowchart LR
-    F[Official Final\n3안 Production Model]
+    F[Official Final<br/>3안 Production Model]
     R[Post-submission Research]
-    S9[Stage09 Baseline Anchor\nPublic 0.7422935458]
-    S12[Stage12 Donor/MP Gated Champion\nPublic 0.7423208756]
+    S9[Stage09 Baseline Anchor<br/>Public 0.7422935458]
+    S12[Stage12 Donor/MP Gated Champion<br/>Public 0.7423208756]
     L[Stage13 Champion Lock]
-    N[Stage14-16 Further Research\nNo safe replacement]
+    N[Stage14-16 Further Research<br/>No safe replacement]
 
     F --> R --> S9 --> S12 --> L --> N
 ```
