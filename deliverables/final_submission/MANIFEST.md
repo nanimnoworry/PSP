@@ -2,7 +2,7 @@
 
 > Canonical record of the files supplied by the team as the **actual final project/submission materials**.
 >
-> This manifest is intentionally conservative: a same-named file already present in GitHub is **not** treated as identical unless its hash matches.
+> A same-named file already present in GitHub is **not** treated as identical unless its hash matches.
 
 ## Canonical artifact set
 
@@ -20,19 +20,27 @@ The following hashes were calculated from the files supplied directly by the tea
 
 ## Important identity check
 
-The file currently stored at repository root as `00.Project_Fertility_PSP_v5.ipynb` has historically had Git blob SHA:
+The older same-named notebook that had been stored in the GitHub repository is now preserved at:
+
+```text
+historical/notebooks/00.Project_Fertility_PSP_v5.ipynb
+```
+
+Its Git blob SHA is:
 
 ```text
 e6eec0a6512bfa20fca2b9a4eaf700d1b5cdad87
 ```
 
-The canonical team-supplied final artifact above has Git blob SHA:
+The canonical team-supplied final artifact has Git blob SHA:
 
 ```text
 97b1d34ed14e7e5f07ba1d25a07dd7d310faaf23
 ```
 
-Therefore the root file and the supplied final artifact must **not** be assumed to be the same version merely because the filename matches.
+Therefore the historical GitHub notebook and the supplied final artifact are **different versions**, despite sharing the same filename.
+
+The historical archive move reused the original blob SHA, so this distinction remains verifiable after repository cleanup.
 
 ## Preservation policy
 
