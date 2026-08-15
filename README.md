@@ -11,8 +11,7 @@
   <img src="https://img.shields.io/badge/Final-Plan%203%20%C2%B7%200.74231-EA580C?style=flat-square" alt="Final result">
 </p>
 
-난임 시술 데이터를 이용해 임신 성공 여부를 예측한 팀 프로젝트입니다.  
-시술 유형에 따른 결측 구조와 임상 변수를 살펴보고, OOF 검증과 앙상블을 거쳐 최종 모델을 선정했습니다.
+난임 시술 데이터 기반 임신 성공 여부 예측 · 구조적 결측 · OOF 검증 · 앙상블
 
 </div>
 
@@ -29,7 +28,7 @@
 | 최고 제출 점수 | **2안 · 0.74232** |
 | 최종 채택 모델 | **3안 · 0.74231** |
 
-2안이 제출 점수는 조금 더 높았지만, 최종 발표에서는 모델 복잡도와 검증 부담, seed 변동성, 추론 비용까지 함께 고려해 3안을 최종 모델로 선택했습니다.
+**채택 기준:** 제출 점수 단독 최적화 제외 · 모델 복잡도 · 검증 부담 · seed 변동성 · 추론 비용
 
 ## 모델 흐름
 
@@ -45,28 +44,27 @@ flowchart LR
     D --> R
 ```
 
-세부 계보는 [`docs/model_lineage.md`](docs/model_lineage.md)에 정리되어 있습니다.
+공식 계보: [`docs/model_lineage.md`](docs/model_lineage.md)
 
 ## 주요 연구 내용
 
 ### 구조적 결측
 
-IVF와 DI는 시술 과정이 다르기 때문에 같은 결측값이라도 의미가 다를 수 있습니다. 특히 DI에서 배아·난자·이식 관련 값이 함께 비는 패턴을 단순 누락으로 처리하지 않고, 시술 과정에서 해당 정보가 존재하지 않는 구조적 결측으로 해석했습니다.
+IVF·DI 시술 과정 차이에 따른 결측 의미 분리.  
+DI의 배아·난자·이식 관련 동시 결측은 단순 누락이 아닌 **시술 구조상 비해당**으로 처리.
 
 ### Feature Engineering
 
-연령, 시술 유형, 난자·배아 수, 이식 시점, 기증자 정보, 과거 시술 이력을 기본 축으로 사용했습니다. 여기에 연령 구간, 시술별 조합 변수, 배아·난자 관련 비율과 상호작용 변수를 추가해 성능 변화를 확인했습니다.
+**기본 축:** 연령 · 시술 유형 · 난자/배아 수 · 이식 시점 · 기증자 정보 · 과거 시술 이력  
+**확장:** 연령 구간 · 시술 조합 · 배아/난자 비율 · 상호작용 변수
 
 ### OOF와 앙상블
 
-주요 모델은 `CatBoost`, `LightGBM`, `XGBoost`였습니다. 단일 hold-out보다 K-Fold OOF를 중심으로 비교했고, 다음 조합을 함께 실험했습니다.
+**주요 모델:** `CatBoost` · `LightGBM` · `XGBoost`  
+**검증:** K-Fold OOF 중심  
+**조합:** Weighted · Rank · Multi-Seed · Stacking
 
-- Weighted Ensemble
-- Rank Ensemble
-- Multi-Seed Ensemble
-- Stacking
-
-Rank 기반 조합은 ROC-AUC를 높이는 데 도움이 될 수 있지만 확률값의 보정 성능은 달라질 수 있어 LogLoss도 함께 확인했습니다.
+Rank 기반 조합은 ROC-AUC와 확률 보정 특성이 다를 수 있어 LogLoss 병행 확인.
 
 ## 발표 기준 성능
 
@@ -76,13 +74,15 @@ Rank 기반 조합은 ROC-AUC를 높이는 데 도움이 될 수 있지만 확�
 | **2안** | feature 확장 + weighted / stacking | ≈ `0.74088` | **`0.74232`** | 최고 제출 점수 |
 | **3안** | OOF + Multi-Seed | ≈ `0.74060` | `0.74231` | **최종 채택** |
 
-내부 OOF는 실험안별 split·seed·전처리 조건이 다를 수 있어 아주 작은 차이를 직접적인 순위로 해석하지 않습니다.
+**OOF 비교 주의:** 실험안별 split · seed · 전처리 조건 차이. 미세 점수 차이의 직접 순위화 제외.
 
 ## 최종 제출 자료
 
-팀이 최종 제출한 Notebook과 발표자료의 파일명·해시는 [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md)에 기록했습니다.
+공식 제출 Notebook·발표자료 파일명/SHA256: [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md)
 
-과거 개발 과정의 Notebook은 `historical/notebooks/`, 이미지와 캡처 자료는 `historical/assets/`에 보존합니다. 현재 루트의 v6.2 Notebook은 제출 이후 재현성과 실행 구조를 정리한 후속 작업이며, 공식 최종 제출본을 대체하지 않습니다.
+- `historical/notebooks/` — 과거 개발 Notebook
+- `historical/assets/` — 이미지·캡처 자료
+- 루트 v6.2 Notebook — 제출 이후 재현성·실행 구조 정비본, 공식 최종 제출본과 구분
 
 ## Repository
 
@@ -103,24 +103,25 @@ PSP/
 ```
 
 - [`docs/model_lineage.md`](docs/model_lineage.md) — 공식 모델 계보
-- [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md) — 최종 제출 artifact 기록
+- [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md) — 최종 제출 artifact
 - [`post_submission/README.md`](post_submission/README.md) — v6.x 후속 작업
 - [`historical/README.md`](historical/README.md) — 과거 개발 자료
 
 ## Related Repositories
 
-| Repository | 내용 |
+| Repository | 범위 |
 |---|---|
-| [`BS`](https://github.com/nanimnoworry/BS) | 3안과 연결된 모델 비교·OOF·앙상블 연구 |
-| `planB` | 공식 발표 이후의 추가 모델 연구와 강건성 검증 |
-| `Research-Papers` | 임상·문헌 근거와 발표자료 아카이브 |
+| [`BS`](https://github.com/nanimnoworry/BS) | 3안 연계 모델 비교 · OOF · 앙상블 |
+| `planB` | 공식 발표 이후 후속 모델 연구 · 강건성 검증 |
+| `Research-Papers` | 임상·문헌 근거 · 발표자료 아카이브 |
 
-연구 결과는 실제 의료 판단이나 임상 의사결정을 위한 모델이 아닙니다.
+**용도 제한:** 임상 의사결정용 모델 아님.
 
 ---
 
 ## License and Rights
 
-이 공개 저장소는 포트폴리오·연구 검토를 위해 열람할 수 있지만 오픈소스로 배포하지 않습니다. 별도 서면 허가 없이 재사용·수정·재배포할 수 없습니다. 대회 데이터, 예측·제출 산출물, 스크린샷, 의존 라이브러리와 인용 문헌은 이 저장소가 재라이선스하지 않습니다.
+**Public view · no public reuse license.**  
+별도 서면 허가 없는 재사용 · 수정 · 재배포 불가. 대회 데이터, 예측/제출 산출물, 스크린샷, 의존 라이브러리, 인용 문헌은 각 권리·조건 적용.
 
-자세한 내용은 [LICENSE](LICENSE), [RIGHTS.md](RIGHTS.md), [CONTRIBUTORS.md](CONTRIBUTORS.md)를 확인하세요.
+[LICENSE](LICENSE) · [RIGHTS.md](RIGHTS.md) · [CONTRIBUTORS.md](CONTRIBUTORS.md)
