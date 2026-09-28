@@ -11,8 +11,8 @@
 flowchart LR
     A[1안<br/>기초 성능 수립<br/>OOF Ensemble<br/>Submission AUC 0.74213]
     B[2안<br/>Feature 확장 + Ensemble/Stacking<br/>Submission AUC 0.74232]
-    C[3안<br/>OOF + Multi-Seed 일반화<br/>Submission AUC 0.74231]
-    D[Final Adopted<br/>3안 Production Model]
+    C[3안<br/>OOF + Multi-Seed 안정성<br/>Submission AUC 0.74231]
+    D[Final Adopted<br/>3안 Submission Model]
 
     A --> B --> C --> D
     B -. Highest submitted AUC .-> D
@@ -20,11 +20,11 @@ flowchart LR
 
 | 구분 | 1안 | 2안 | 3안 |
 |---|---|---|---|
-| 역할 | 기초 성능 / screening | 최고 제출 benchmark | 실무·일반화 균형 |
+| 역할 | 기초 성능 / screening | 최고 제출 benchmark | 검증 안정성·복잡도 균형 |
 | 내부 OOF AUC | ≈ `0.74058` | ≈ `0.74088` | ≈ `0.74060` |
 | 제출 AUC | `0.74213` | **`0.74232`** | `0.74231` |
 | 핵심 전략 | boosting + OOF ensemble | feature 확장 + weighted/stacking | OOF + Multi-Seed |
-| 최종 역할 | baseline | highest-score benchmark | **Final Production Model** |
+| 최종 역할 | baseline | highest-score benchmark | **Final Adopted Submission Model** |
 
 **3안 채택 기준**
 - stacking 구조 복잡도
@@ -88,11 +88,11 @@ Stacking
 
 ## 3. Post-Submission — planB
 
-**공식 3안 Production model ≠ planB research champion**
+**공식 3안 final adopted submission model ≠ planB research champion**
 
 ```mermaid
 flowchart LR
-    F[Official Final<br/>3안 Production Model]
+    F[Official Final<br/>3안 Submission Model]
     R[Post-submission Research]
     S9[Stage09 Baseline Anchor<br/>Public 0.7422935458]
     S12[Stage12 Donor/MP Gated Champion<br/>Public 0.7423208756]
