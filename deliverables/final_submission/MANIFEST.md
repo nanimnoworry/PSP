@@ -20,16 +20,22 @@ The following hashes were calculated from the files supplied directly by the tea
 
 ## Important identity check
 
-The older same-named notebook that had been stored in the GitHub repository is now preserved at:
+The older same-named notebook that had been stored in the GitHub repository is tracked at:
 
 ```text
 historical/notebooks/00.Project_Fertility_PSP_v5.ipynb
 ```
 
-Its Git blob SHA is:
+Its **pre-sanitization source blob** is:
 
 ```text
 e6eec0a6512bfa20fca2b9a4eaf700d1b5cdad87
+```
+
+The current default-branch public copy has execution outputs cleared and therefore has a different blob:
+
+```text
+e0a2946304470cf41a9d84e45f052eefbf44d440
 ```
 
 The canonical team-supplied final artifact has Git blob SHA:
@@ -40,12 +46,12 @@ The canonical team-supplied final artifact has Git blob SHA:
 
 Therefore the historical GitHub notebook and the supplied final artifact are **different versions**, despite sharing the same filename.
 
-The historical archive move reused the original blob SHA, so this distinction remains verifiable after repository cleanup.
+The original source blob SHA remains recorded for provenance, while the default-branch public copy is intentionally sanitized. The source/current mapping is documented in `docs/PUBLIC_NOTEBOOK_SANITIZATION.md`.
 
 ## Preservation policy
 
 1. This manifest is the source of truth for artifact identity.
-2. Existing historical notebooks are not deleted just because a newer or canonical artifact exists.
+2. Existing historical notebook research content is retained, while public execution outputs may be cleared to respect the repository's data-publication boundary.
 3. Contest/final-presentation artifacts and post-submission research are documented as separate lineages.
 4. Public/leaderboard score, OOF score, and final-adoption status are recorded separately.
 5. Exact raw artifacts should only be copied into this directory when byte identity can be preserved; a recreated or reformatted file must never be presented as the original.
