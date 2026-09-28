@@ -58,8 +58,8 @@ The final presentation compared three experiment plans:
 |---|---|---:|---:|---|
 | 1안 | core boosting-model comparison / OOF ensemble baseline | ≈ `0.74058` | `0.74213` | baseline / screening |
 | 2안 | richer feature expansion + ensemble/stacking | ≈ `0.74088` | **`0.74232`** | highest submitted AUC / upper-bound benchmark |
-| 3안 | OOF + Multi-Seed based generalization | ≈ `0.74060` | `0.74231` | **final adopted production model** |
+| 3안 | OOF + Multi-Seed stability | ≈ `0.74060` | `0.74231` | **final adopted submission model** |
 
-The team presentation explicitly chose **3안 as the final Production model** despite 2안 having a marginally higher submission AUC, citing the balance of performance, scalability, latency/compute burden, pipeline complexity, leakage/overfitting risk, and score stability.
+The team presentation explicitly chose **3안 as the final adopted submission model** despite 2안 having a marginally higher submission AUC, citing the balance of performance, scalability, latency/compute burden, pipeline complexity, leakage/overfitting risk, and score stability.
 
 See [`../../docs/model_lineage.md`](../../docs/model_lineage.md) for the lineage view.
