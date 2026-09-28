@@ -27,3 +27,11 @@ A file's presence in the repository does not prove that the project contributors
 ## Permission requests
 
 Repository maintainers may grant only rights they are authorized to grant. Any broader reuse requires prior written permission from every applicable rightsholder and compliance with third-party terms.
+
+
+## Public notebook output boundary
+
+Current default-branch public notebooks have code-cell execution outputs cleared so that competition row previews are not intentionally published as repository content.  
+Source code and markdown remain available for portfolio/research inspection.
+
+This sanitation does not rewrite Git history. Pre-sanitization source blob identities and current public blob identities are recorded in [`docs/PUBLIC_NOTEBOOK_SANITIZATION.md`](docs/PUBLIC_NOTEBOOK_SANITIZATION.md).
