@@ -125,8 +125,8 @@ vs old Public +0.0000273298
 | Repository | 역할 |
 |---|---|
 | [`nanimnoworry/PSP`](https://github.com/nanimnoworry/PSP) | **공식 프로젝트 허브 · 최종 제출/발표 SSOT** |
-| `nanimnoworry/planB` | 후속 실험 · 검증 · research champion |
-| `nanimnoworry/Research-Papers` | 임상·문헌 근거 · 발표자료 |
+| `nanimnoworry/planB` *(private)* | 후속 실험 · 검증 · research champion |
+| `nanimnoworry/Research-Papers` *(private)* | 임상·문헌 근거 · 발표자료 |
 
 ---
 
