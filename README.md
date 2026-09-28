@@ -2,7 +2,7 @@
 
 # 🧬 Fertility PSP
 
-### 난임 환자 대상 임신 성공 여부 예측 AI 프로젝트
+### 대회 제공 난임 시술 데이터 기반 임신 성공 여부 예측 연구
 
 <p>
   <img src="https://img.shields.io/badge/Task-Binary%20Classification-2563EB?style=flat-square" alt="Task">
@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Final-Plan%203%20%C2%B7%200.74231-EA580C?style=flat-square" alt="Final result">
 </p>
 
-난임 시술 데이터 기반 임신 성공 여부 예측 · 구조적 결측 · OOF 검증 · 앙상블
+대회 제공 난임 시술 정형 데이터 기반 이진 분류 · 구조적 결측 · OOF 검증 · 앙상블
 
 </div>
 
@@ -115,7 +115,7 @@ PSP/
 | `planB` | 공식 발표 이후 후속 모델 연구 · 강건성 검증 |
 | `Research-Papers` | 임상·문헌 근거 · 발표자료 아카이브 |
 
-**용도 제한:** 임상 의사결정용 모델 아님.
+**Scope boundary:** 해커톤/연구 결과이며 실제 의료 환경의 임상 검증·진단·의사결정 성능을 주장하지 않음.
 
 ---
 
