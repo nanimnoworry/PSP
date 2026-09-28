@@ -7,7 +7,7 @@
 - Official model lineage documented.
 - Post-submission research separated from official submission lineage.
 - Historical notebook identity index recorded.
-- Historical notebooks moved to `historical/notebooks/` with their existing Git blob SHA preserved.
+- Historical notebooks moved to `historical/notebooks/`; original source blob SHA는 provenance로 기록하고 default-branch 공개본의 실행 output은 sanitize.
 - Legacy PNG/screenshots moved to `historical/assets/` with their existing Git blob SHA preserved.
 - Active v6.2 execution contract preserved.
 - Repository root reduced to the active notebooks, README, and purpose-specific directories.
@@ -42,4 +42,4 @@ Moving it without changing the validation contract would reduce reproducibility,
 
 ## Preservation result
 
-The archive move was performed by reusing the existing blob SHA values instead of rewriting notebook content. Therefore the repository became easier to browse without silently modifying historical research artifacts.
+초기 archive 이동은 기존 blob identity를 보존해 수행했습니다. 이후 공개 데이터 경계를 강화하기 위해 default branch의 Notebook 실행 output과 execution count를 제거했으며, pre-sanitization source SHA와 current public SHA를 모두 기록합니다. 자세한 내역은 [`PUBLIC_NOTEBOOK_SANITIZATION.md`](PUBLIC_NOTEBOOK_SANITIZATION.md)를 기준으로 합니다.
