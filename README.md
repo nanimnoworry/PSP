@@ -81,7 +81,8 @@ Rank 기반 조합은 ROC-AUC와 확률 보정 특성이 다를 수 있어 LogLo
 
 ## 최종 제출 자료
 
-공식 제출 Notebook·발표자료 파일명/SHA256: [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md)
+공식 제출 Notebook·발표자료 파일명/SHA256: [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md)  
+**Artifact boundary:** MANIFEST는 canonical 원본의 identity/provenance 기록이며, 해당 원본 파일 전체를 public repository에 호스팅한다는 의미는 아닙니다.
 
 - `historical/notebooks/` — 과거 개발 Notebook
 - `historical/assets/` — 이미지·캡처 자료
