@@ -38,7 +38,7 @@ This is a **public-surface sanitation**, not a claim that prior Git history was 
 
 | Notebook | Pre-sanitization source blob | Current public blob | Status |
 |---|---|---|---|
-| `3안 모델.ipynb의 사본` | `5f3352bcf8ff1d326e6cbb532e5fc4d4b78285b6` | `e633a84131bb4c5cf9aa38e3309c8878b2d062b0` | outputs cleared |
+| `plan3_model_research.ipynb` *(historical filename: `3안 모델.ipynb의 사본`)* | `5f3352bcf8ff1d326e6cbb532e5fc4d4b78285b6` | `e633a84131bb4c5cf9aa38e3309c8878b2d062b0` | outputs cleared; sanitized blob later renamed without content change |
 
 ## Verification
 
