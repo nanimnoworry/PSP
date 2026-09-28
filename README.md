@@ -106,6 +106,9 @@ PSP/
 - [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md) — 최종 제출 artifact
 - [`post_submission/README.md`](post_submission/README.md) — v6.x 후속 작업
 - [`historical/README.md`](historical/README.md) — 과거 개발 자료
+- [`docs/PUBLIC_NOTEBOOK_SANITIZATION.md`](docs/PUBLIC_NOTEBOOK_SANITIZATION.md) — 공개 Notebook output sanitation · source/current blob provenance
+
+**Public data boundary:** 대회 원본 `train.csv` / `test.csv`는 저장소에 포함하지 않으며, default branch의 공개 Notebook은 실행 output과 execution count를 제거한 상태로 유지합니다.
 
 ## Related Repositories
 
