@@ -13,6 +13,9 @@
 
 대회 제공 난임 시술 정형 데이터 기반 이진 분류 · 구조적 결측 · OOF 검증 · 앙상블
 
+**Competition context:** LG Aimers 6기 Phase2 · [DACON 난임 환자 대상 임신 성공 여부 예측 AI 온라인 해커톤](https://dacon.io/competitions/official/236452)  
+**Official metric:** ROC-AUC · 대회 규칙상 외부 데이터 사용 금지
+
 </div>
 
 ---
@@ -115,8 +118,8 @@ PSP/
 | Repository | 범위 |
 |---|---|
 | [`BS`](https://github.com/nanimnoworry/BS) | 3안 연계 모델 비교 · OOF · 앙상블 |
-| `planB` | 공식 발표 이후 후속 모델 연구 · 강건성 검증 |
-| `Research-Papers` | 임상·문헌 근거 · 발표자료 아카이브 |
+| `planB` *(private)* | 공식 발표 이후 후속 모델 연구 · 강건성 검증 |
+| `Research-Papers` *(private)* | 임상·문헌 근거 · 발표자료 아카이브 |
 
 **Scope boundary:** 해커톤/연구 결과이며 실제 의료 환경의 임상 검증·진단·의사결정 성능을 주장하지 않음.
 
