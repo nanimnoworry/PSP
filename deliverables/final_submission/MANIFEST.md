@@ -2,6 +2,8 @@
 
 > Canonical record of the files supplied by the team as the **actual final project/submission materials**.
 >
+> **Public-hosting boundary:** this directory is an identity/provenance record. The canonical raw submission artifacts listed below are not all hosted as public repository files.
+>
 > A same-named file already present in GitHub is **not** treated as identical unless its hash matches.
 
 ## Canonical artifact set
