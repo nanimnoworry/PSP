@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1112" viewBox="0 0 800 1112" role="img" aria-labelledby="title desc">
+<title id="title">Official submission lineage mobile</title><desc id="desc">Vertical Plan 1 to Plan 3 official lineage.</desc>
+<rect width="800" height="1112" rx="32" fill="#F8FAFC"/>
+<g font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <g data-title="true"><text x="64" y="80" fill="#0B1220" font-size="38" font-weight="830"><tspan>OFFICIAL LINEAGE</tspan></text></g>
+  <text x="64" y="126" fill="#64748B" font-size="24"><tspan>Historical facts kept explicitly separate</tspan></text>
+  <g data-grid="16">
+    <rect x="64" y="176" width="672" height="224" rx="24" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <rect x="64" y="416" width="672" height="256" rx="24" fill="#F0F9FF" stroke="#7DD3FC"/>
+    <rect x="64" y="688" width="672" height="320" rx="24" fill="#F5F3FF" stroke="#C4B5FD"/>
+  </g>
+  <text x="96" y="226" fill="#64748B" font-size="24" font-weight="820"><tspan>PLAN 1 · BASELINE</tspan></text>
+  <text x="96" y="286" fill="#0B1220" font-size="36" font-weight="800"><tspan>OOF ensemble</tspan></text>
+  <text x="96" y="346" fill="#475569" font-size="30"><tspan>Submission 0.74213</tspan></text>
+
+  <text x="96" y="466" fill="#0284C7" font-size="24" font-weight="820"><tspan>PLAN 2 · HIGHEST SUBMITTED</tspan></text>
+  <text x="96" y="526" fill="#0B1220" font-size="34" font-weight="800"><tspan>Feature expansion + stacking</tspan></text>
+  <text x="96" y="604" fill="#0284C7" font-size="44" font-weight="850"><tspan>0.74232</tspan></text>
+
+  <text x="96" y="738" fill="#7C5FD1" font-size="24" font-weight="820"><tspan>PLAN 3 · FINAL ADOPTED</tspan></text>
+  <text x="96" y="798" fill="#0B1220" font-size="36" font-weight="800"><tspan>OOF + Multi-Seed</tspan></text>
+  <text x="96" y="868" fill="#7C5FD1" font-size="44" font-weight="850"><tspan>0.74231</tspan></text>
+  <text x="96" y="930" fill="#64748B" font-size="24"><tspan>Complexity · stability · validation burden</tspan></text>
+  <text x="96" y="966" fill="#64748B" font-size="24"><tspan>and inference cost were also considered.</tspan></text>
+</g>
+</svg>

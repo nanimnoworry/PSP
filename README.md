@@ -1,96 +1,105 @@
-<div align="center">
+<picture>
+  <source media="(max-width: 640px)" srcset="./docs/assets/readme/hero-mobile.svg" />
+  <img src="./docs/assets/readme/hero.svg" width="100%" alt="Fertility PSP official evidence ledger" />
+</picture>
 
-# 🧬 Fertility PSP
+<h1 align="center">🧬 Fertility PSP</h1>
 
-### 대회 제공 난임 시술 데이터 기반 임신 성공 여부 예측 연구
-
-<p>
-  <img src="https://img.shields.io/badge/Task-Binary%20Classification-2563EB?style=flat-square" alt="Task">
-  <img src="https://img.shields.io/badge/Metric-ROC--AUC-7C3AED?style=flat-square" alt="Metric">
-  <img src="https://img.shields.io/badge/Models-CatBoost%20%7C%20LightGBM%20%7C%20XGBoost-059669?style=flat-square" alt="Models">
-  <img src="https://img.shields.io/badge/Final-Plan%203%20%C2%B7%200.74231-EA580C?style=flat-square" alt="Final result">
+<p align="center">
+  <strong>대회 제공 난임 시술 데이터 기반 임신 성공 여부 예측 연구</strong><br />
+  Official project SSOT · structural missingness · OOF validation · reproducible model lineage
 </p>
 
-대회 제공 난임 시술 정형 데이터 기반 이진 분류 · 구조적 결측 · OOF 검증 · 앙상블
+<p align="center">
+  LG Aimers 6기 Phase2 · <a href="https://dacon.io/competitions/official/236452">DACON 공식 대회</a> · ROC-AUC
+</p>
 
-**Competition context:** LG Aimers 6기 Phase2 · [DACON 난임 환자 대상 임신 성공 여부 예측 AI 온라인 해커톤](https://dacon.io/competitions/official/236452)  
-**Official metric:** ROC-AUC · 대회 규칙상 외부 데이터 사용 금지
+## Start Here
 
-</div>
+이 저장소는 nanimnoworry Organization의 **공식 프로젝트 기준점(SSOT)** 입니다.
 
----
+- **Organization overview** — [nanimnoworry](https://github.com/nanimnoworry)
+- **공식 모델 계보** — [docs/model_lineage.md](docs/model_lineage.md)
+- **최종 제출 artifact identity** — [deliverables/final_submission/MANIFEST.md](deliverables/final_submission/MANIFEST.md)
+- **Public Notebook sanitation provenance** — [docs/PUBLIC_NOTEBOOK_SANITIZATION.md](docs/PUBLIC_NOTEBOOK_SANITIZATION.md)
 
-## 최종 결과
+> 처음 보는 경우 이 README → model lineage → final submission manifest 순서가 가장 빠릅니다.
 
-| 항목 | 결과 |
-|---|---:|
-| 평가 지표 | ROC-AUC |
-| 1안 | OOF 기반 기초 모델 · 제출 `0.74213` |
-| 2안 | Feature 확장 + Ensemble / Stacking · **제출 `0.74232`** |
-| 3안 | OOF + Multi-Seed · 제출 `0.74231` |
-| 최고 제출 점수 | **2안 · 0.74232** |
-| 최종 채택 모델 | **3안 · 0.74231** |
+## Official Result
 
-**채택 기준:** 제출 점수 단독 최적화 제외 · 모델 복잡도 · 검증 부담 · seed 변동성 · 추론 비용
+<picture>
+  <source media="(max-width: 640px)" srcset="./docs/assets/readme/official-lineage-mobile.svg" />
+  <img src="./docs/assets/readme/official-lineage.svg" width="100%" alt="Official lineage separating highest submitted Plan 2 from final adopted Plan 3" />
+</picture>
 
-## 모델 흐름
+공식 발표 기준 결과는 다음 두 문장을 분리해서 읽어야 합니다.
 
-```mermaid
-flowchart LR
-    A[1안<br/>기초 성능 수립<br/>0.74213]
-    B[2안<br/>Feature 확장 + Stacking<br/>0.74232]
-    C[3안<br/>OOF + Multi-Seed<br/>0.74231]
-    D[Final<br/>Plan 3]
-    R[Post-submission<br/>planB]
+- **Highest submitted AUC:** 2안 · **0.74232**
+- **Final adopted submission model:** 3안 · **0.74231**
 
-    A --> B --> C --> D
-    D --> R
-```
+3안 채택은 제출 점수 하나만으로 결정하지 않고, 모델 복잡도 · 검증 부담 · seed 변동성 · 추론 비용 · 운영 단순성을 함께 고려한 결과입니다.
 
-공식 계보: [`docs/model_lineage.md`](docs/model_lineage.md)
+<details>
+<summary><strong>발표 기준 1안·2안·3안 수치 보기</strong></summary>
 
-## 주요 연구 내용
+- **1안** — OOF 기반 boosting/ensemble baseline · 내부 OOF AUC ≈ 0.74058 · 제출 AUC 0.74213
+- **2안** — feature 확장 + weighted / stacking · 내부 OOF AUC ≈ 0.74088 · 제출 AUC **0.74232**
+- **3안** — OOF + Multi-Seed · 내부 OOF AUC ≈ 0.74060 · 제출 AUC 0.74231 · **최종 채택**
 
-### 구조적 결측
+> 실험안별 split · seed · 전처리 조건이 달라 OOF의 미세 차이를 직접 순위화하지 않습니다.
 
-IVF·DI 시술 과정 차이에 따른 결측 의미 분리.  
-DI의 배아·난자·이식 관련 동시 결측은 단순 누락이 아닌 **시술 구조상 비해당**으로 처리.
+</details>
 
-### Feature Engineering
+## Research System
 
-**기본 축:** 연령 · 시술 유형 · 난자/배아 수 · 이식 시점 · 기증자 정보 · 과거 시술 이력  
-**확장:** 연령 구간 · 시술 조합 · 배아/난자 비율 · 상호작용 변수
+### Structural Missingness
 
-### OOF와 앙상블
+IVF·DI 시술 과정 차이에 따라 배아·난자·이식 관련 결측의 의미가 달라질 수 있으므로, 단순 누락과 **시술 구조상 비해당 가능성**을 분리해 검토했습니다.
 
-**주요 모델:** `CatBoost` · `LightGBM` · `XGBoost`  
-**검증:** K-Fold OOF 중심  
-**조합:** Weighted · Rank · Multi-Seed · Stacking
+### Domain-Aware Feature Engineering
 
-Rank 기반 조합은 ROC-AUC와 확률 보정 특성이 다를 수 있어 LogLoss 병행 확인.
+연령 · IVF/DI/ICSI · 난자/배아 수 · 이식 시점 · 기증자 정보 · 과거 시술/임신/출산 이력과 이들의 조합·비율·missing indicator를 연구했습니다.
 
-## 발표 기준 성능
+### OOF-First Validation
 
-| 실험안 | 전략 | 내부 OOF AUC | 제출 AUC | 역할 |
-|---|---|---:|---:|---|
-| **1안** | boosting 비교 + OOF ensemble | ≈ `0.74058` | `0.74213` | 기초 성능 수립 |
-| **2안** | feature 확장 + weighted / stacking | ≈ `0.74088` | **`0.74232`** | 최고 제출 점수 |
-| **3안** | OOF + Multi-Seed | ≈ `0.74060` | `0.74231` | **최종 채택** |
+단일 hold-out 하나보다 K-Fold OOF를 중심으로 비교하며, split · seed · feature contract가 다른 결과를 같은 조건처럼 취급하지 않습니다.
 
-**OOF 비교 주의:** 실험안별 split · seed · 전처리 조건 차이. 미세 점수 차이의 직접 순위화 제외.
+### Ensemble Diversity
 
-## 최종 제출 자료
+주요 모델은 CatBoost · LightGBM · XGBoost이며, Weighted · Rank · Multi-Seed · Stacking을 비교했습니다. Rank 계열은 ROC-AUC와 calibration 특성이 다를 수 있어 LogLoss도 함께 확인했습니다.
 
-공식 제출 Notebook·발표자료 파일명/SHA256: [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md)  
-**Artifact boundary:** MANIFEST는 canonical 원본의 identity/provenance 기록이며, 해당 원본 파일 전체를 public repository에 호스팅한다는 의미는 아닙니다.
+## Artifact & Reproducibility Boundary
 
-- `historical/notebooks/` — 과거 개발 Notebook
-- `historical/assets/` — 이미지·캡처 자료
-- 루트 v6.2 Notebook — 제출 이후 재현성·실행 구조 정비본, 공식 최종 제출본과 구분
+<picture>
+  <source media="(max-width: 640px)" srcset="./docs/assets/readme/artifact-boundary-mobile.svg" />
+  <img src="./docs/assets/readme/artifact-boundary.svg" width="100%" alt="Artifact boundary separating official final, post-submission reproducibility, and historical material" />
+</picture>
 
-## Repository
+이 저장소는 **파일명보다 artifact identity와 역할을 우선**합니다.
 
-```text
+- **Official final** — 팀이 실제 제출·발표에 사용한 원본 identity를 hash로 기록
+- **Post-submission** — 제출 이후 재현성, 실행 구조, 문헌 merge, audit
+- **Historical** — 과거 중간 Notebook과 탐색 기록
+- **Private follow-up** — planB의 후속 모델 연구는 공식 발표 결과와 별도 계보
+
+Canonical raw artifact 전부를 public repository에 호스팅한다는 의미는 아닙니다. 정확한 파일명·SHA-256·Git blob identity는 [MANIFEST.md](deliverables/final_submission/MANIFEST.md)를 기준으로 합니다.
+
+## Current Execution Surface
+
+현재 default branch에서 재현성·실행 구조를 점검하는 주요 surface:
+
+<pre>
+00.Project_Fertility_PSP_v6.2.ipynb
+00.Project_Fertility_PSP_v6.2_final_literature_merged.ipynb
+scripts/validate_v6_2_notebook.py
+reports/v6_2_notebook_audit.md
+</pre>
+
+이 v6.2 계열은 **post-submission reproducibility asset**이며, canonical final submission artifact와 동일 파일이라고 주장하지 않습니다.
+
+## Repository Guide
+
+<pre>
 PSP/
 ├── README.md
 ├── 00.Project_Fertility_PSP_v6.2.ipynb
@@ -98,37 +107,34 @@ PSP/
 ├── deliverables/final_submission/
 ├── docs/
 ├── historical/
-│   ├── notebooks/
-│   └── assets/
 ├── post_submission/
 ├── reports/
 ├── scripts/
 └── tests/
-```
+</pre>
 
-- [`docs/model_lineage.md`](docs/model_lineage.md) — 공식 모델 계보
-- [`deliverables/final_submission/MANIFEST.md`](deliverables/final_submission/MANIFEST.md) — 최종 제출 artifact
-- [`post_submission/README.md`](post_submission/README.md) — v6.x 후속 작업
-- [`historical/README.md`](historical/README.md) — 과거 개발 자료
-- [`docs/PUBLIC_NOTEBOOK_SANITIZATION.md`](docs/PUBLIC_NOTEBOOK_SANITIZATION.md) — 공개 Notebook output sanitation · source/current blob provenance
+- [docs/model_lineage.md](docs/model_lineage.md) — 공식 / post-submission 계보 분리
+- [post_submission/README.md](post_submission/README.md) — 제출 이후 재현성 surface
+- [historical/README.md](historical/README.md) — 과거 개발 자료
+- [docs/repository_map.md](docs/repository_map.md) — 저장소 역할 지도
 
-**Public data boundary:** 대회 원본 `train.csv` / `test.csv`는 저장소에 포함하지 않으며, default branch의 공개 Notebook은 실행 output과 execution count를 제거한 상태로 유지합니다.
+## Related Research
 
-## Related Repositories
+- [nanimnoworry/BS](https://github.com/nanimnoworry/BS) — Plan 3 연계 모델 비교 · 5-Fold OOF · Weighted / Rank Ensemble
+- planB *(private)* — 공식 제출 이후 후속 모델 연구 · bootstrap / slice 검증
+- Research-Papers *(private)* — 임상·문헌 근거 · 발표자료 provenance
 
-| Repository | 범위 |
-|---|---|
-| [`BS`](https://github.com/nanimnoworry/BS) | 3안 연계 모델 비교 · OOF · 앙상블 |
-| `planB` *(private)* | 공식 발표 이후 후속 모델 연구 · 강건성 검증 |
-| `Research-Papers` *(private)* | 임상·문헌 근거 · 발표자료 아카이브 |
+## Public Data Boundary
 
-**Scope boundary:** 해커톤/연구 결과이며 실제 의료 환경의 임상 검증·진단·의사결정 성능을 주장하지 않음.
+대회 원본 train.csv / test.csv는 이 public repository에 포함하지 않습니다. Default-branch public Notebook은 code-cell output과 execution count를 제거한 상태로 관리하며, source/current blob mapping은 [PUBLIC_NOTEBOOK_SANITIZATION.md](docs/PUBLIC_NOTEBOOK_SANITIZATION.md)에 기록합니다.
+
+**Scope boundary:** 해커톤·연구 결과이며 실제 의료 환경의 임상 검증, 진단 또는 의사결정 성능을 주장하지 않습니다. **Not a clinical diagnostic or medical decision system.**
 
 ---
 
-## License and Rights
+### License and Rights
 
 **Public view · no public reuse license.**  
-별도 서면 허가 없는 재사용 · 수정 · 재배포 불가. 대회 데이터, 예측/제출 산출물, 스크린샷, 의존 라이브러리, 인용 문헌은 각 권리·조건 적용.
+별도 서면 허가 없는 재사용 · 수정 · 재배포를 허용하지 않습니다. 대회 데이터, 예측/제출 산출물, 제3자 시각 자료, 라이브러리와 인용 문헌은 각 권리·조건을 따릅니다.
 
 [LICENSE](LICENSE) · [RIGHTS.md](RIGHTS.md) · [CONTRIBUTORS.md](CONTRIBUTORS.md)

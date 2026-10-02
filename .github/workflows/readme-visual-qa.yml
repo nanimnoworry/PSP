@@ -1,0 +1,40 @@
+name: README visual QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate README visual contracts
+        run: python scripts/validate_readme_visuals.py
+      - name: Build visual QA pages
+        run: python scripts/build_readme_qa.py
+      - name: Render Chromium contact sheets
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          timeout 45s "$CHROME" --headless --disable-gpu --disable-dev-shm-usage --no-sandbox --hide-scrollbars --allow-file-access-from-files             --window-size=1800,3000 --screenshot="$PWD/qa-readme/desktop.png" "file://$PWD/qa-readme/desktop.html"
+          timeout 45s "$CHROME" --headless --disable-gpu --disable-dev-shm-usage --no-sandbox --hide-scrollbars --allow-file-access-from-files             --window-size=460,5000 --screenshot="$PWD/qa-readme/mobile.png" "file://$PWD/qa-readme/mobile.html"
+      - name: Upload README visual QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: psp-readme-visual-qa
+          path: |
+            qa-readme/desktop.html
+            qa-readme/mobile.html
+            qa-readme/desktop.png
+            qa-readme/mobile.png
+          if-no-files-found: error

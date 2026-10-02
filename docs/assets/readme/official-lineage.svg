@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="464" viewBox="0 0 1600 464" role="img" aria-labelledby="title desc">
+<title id="title">Official submission lineage</title>
+<desc id="desc">Plan 1 baseline, Plan 2 highest submitted, and Plan 3 final adopted submission model, with no post-submission results mixed into the official lineage.</desc>
+<rect width="1600" height="464" rx="32" fill="#F8FAFC"/>
+<g font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <g data-title="true"><text x="80" y="72" fill="#0B1220" font-size="30" font-weight="830"><tspan>OFFICIAL SUBMISSION LINEAGE</tspan></text></g>
+  <text x="80" y="108" fill="#64748B" font-size="17"><tspan>Highest submitted score and final adoption remain distinct historical facts.</tspan></text>
+  <path d="M288 260 H1312" stroke="#CBD5E1" stroke-width="4"/>
+  <g fill="#94A3B8"><path d="M576 260 l-14 -9 v18z"/><path d="M928 260 l-14 -9 v18z"/></g>
+  <g data-grid="16">
+    <rect x="80" y="160" width="384" height="208" rx="24" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <rect x="480" y="160" width="448" height="208" rx="24" fill="#F0F9FF" stroke="#7DD3FC"/>
+    <rect x="944" y="160" width="576" height="208" rx="24" fill="#F5F3FF" stroke="#C4B5FD"/>
+  </g>
+  <text x="112" y="208" fill="#64748B" font-size="14" font-weight="820" letter-spacing="2"><tspan>PLAN 1 · BASELINE</tspan></text>
+  <text x="112" y="258" fill="#0B1220" font-size="28" font-weight="800"><tspan>OOF ensemble</tspan></text>
+  <text x="112" y="318" fill="#475569" font-size="24"><tspan>Submission 0.74213</tspan></text>
+
+  <text x="512" y="208" fill="#0284C7" font-size="14" font-weight="820" letter-spacing="2"><tspan>PLAN 2 · HIGHEST SUBMITTED</tspan></text>
+  <text x="512" y="250" fill="#0B1220" font-size="25" font-weight="800"><tspan>Feature expansion</tspan></text>
+  <text x="512" y="282" fill="#0B1220" font-size="25" font-weight="800"><tspan>+ ensemble / stacking</tspan></text>
+  <text x="512" y="330" fill="#0284C7" font-size="28" font-weight="850"><tspan>Submission 0.74232</tspan></text>
+
+  <text x="976" y="208" fill="#7C5FD1" font-size="14" font-weight="820" letter-spacing="2"><tspan>PLAN 3 · FINAL ADOPTED</tspan></text>
+  <text x="976" y="258" fill="#0B1220" font-size="28" font-weight="800"><tspan>OOF + Multi-Seed</tspan></text>
+  <text x="976" y="306" fill="#7C5FD1" font-size="28" font-weight="850"><tspan>Submission 0.74231</tspan></text>
+  <text x="976" y="340" fill="#64748B" font-size="16"><tspan>Chosen with complexity, stability, validation burden, and compute in view.</tspan></text>
+</g>
+</svg>
