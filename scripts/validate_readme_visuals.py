@@ -9,6 +9,8 @@ README=ROOT/"README.md"
 ASSETS=ROOT/"docs"/"assets"/"readme"
 REQUIRED={"hero.svg","hero-mobile.svg","official-lineage.svg","official-lineage-mobile.svg","artifact-boundary.svg","artifact-boundary-mobile.svg"}
 GRID=16.0
+MAX_README_CHARS=4500
+MAX_H2=7
 
 def fail(m): raise AssertionError(m)
 def num(v,where):
@@ -18,14 +20,18 @@ def q(v): return abs(v/GRID-round(v/GRID))<1e-9
 
 def validate_readme():
     text=README.read_text(encoding="utf-8"); lower=text.lower()
-    for s in ("0.74232","0.74231","official project","not a clinical diagnostic","public_notebook_sanitization.md","manifest.md"):
+    if len(text)>MAX_README_CHARS: fail(f"editorial budget exceeded: {len(text)} > {MAX_README_CHARS}")
+    h2=re.findall(r"^##\s+",text,re.M)
+    if len(h2)>MAX_H2: fail(f"too many H2 sections: {len(h2)} > {MAX_H2}")
+    if text.count("<details>")<3: fail("technical detail disclosure budget missing")
+    for s in ("0.74232","0.74231","official project ssot","highest submitted auc","final adopted submission model","not a clinical diagnostic","public_notebook_sanitization.md","manifest.md"):
         if s.lower() not in lower: fail(f"README canonical fact missing: {s}")
     for s in ("thisisstress","forest-green","production model","production adopted"):
         if s in lower: fail(f"cross-project or ambiguous term: {s}")
     refs=set(re.findall(r"docs/assets/readme/([A-Za-z0-9._-]+\.svg)",text))
     if refs!=REQUIRED: fail(f"README asset refs mismatch: {sorted(refs)}")
     if text.count("<picture>")!=3 or text.count("max-width: 640px")!=3: fail("responsive picture contract failed")
-    order=["## Start Here","## Official Result","## Research System","## Artifact & Reproducibility Boundary","## Current Execution Surface","## Repository Guide","## Related Research","## Public Data Boundary"]
+    order=["## Start Here","## Official Result","## Research Approach","## Artifact & Reproducibility Boundary","## Reproducibility & Repository Guide","## Related Research","## Public Data & Scope"]
     p=[text.find(x) for x in order]
     if any(x<0 for x in p) or p!=sorted(p): fail("README reading order failed")
 
@@ -63,6 +69,7 @@ def main():
     for p in sorted(ASSETS.glob("*.svg")): validate_svg(p)
     print("PSP README visual validator: PASS")
     print("responsive assets: 3 desktop + 3 mobile")
+    print("editorial: <=4500 chars / <=7 H2 / technical detail collapsed")
     return 0
 
 if __name__=="__main__":
