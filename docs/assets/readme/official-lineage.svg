@@ -17,8 +17,9 @@
   <text x="112" y="318" fill="#475569" font-size="24"><tspan>Submission 0.74213</tspan></text>
 
   <text x="512" y="208" fill="#0284C7" font-size="14" font-weight="820" letter-spacing="2"><tspan>PLAN 2 · HIGHEST SUBMITTED</tspan></text>
-  <text x="512" y="258" fill="#0B1220" font-size="28" font-weight="800"><tspan>Feature expansion + stacking</tspan></text>
-  <text x="512" y="318" fill="#0284C7" font-size="28" font-weight="850"><tspan>Submission 0.74232</tspan></text>
+  <text x="512" y="250" fill="#0B1220" font-size="25" font-weight="800"><tspan>Feature expansion</tspan></text>
+  <text x="512" y="282" fill="#0B1220" font-size="25" font-weight="800"><tspan>+ ensemble / stacking</tspan></text>
+  <text x="512" y="330" fill="#0284C7" font-size="28" font-weight="850"><tspan>Submission 0.74232</tspan></text>
 
   <text x="976" y="208" fill="#7C5FD1" font-size="14" font-weight="820" letter-spacing="2"><tspan>PLAN 3 · FINAL ADOPTED</tspan></text>
   <text x="976" y="258" fill="#0B1220" font-size="28" font-weight="800"><tspan>OOF + Multi-Seed</tspan></text>
